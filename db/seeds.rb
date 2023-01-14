@@ -1,6 +1,21 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
+
+user = User.create!(email: 'test@test.com', password: 'azerty')
+
+lego_sets = [
+  { name: "Bateau pirate", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
+  { name: "Station essence", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
+  { name: "Van de voyage", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
+  { name: "Chateau", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
+  { name: "Voiture", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." }
+]
+
+lego_sets.each do |set|
+  Product.create!(title: set[:name], description: set[:description], price: 0, user: user)
+end
+
 # Examples:
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
