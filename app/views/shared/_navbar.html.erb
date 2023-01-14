@@ -1,9 +1,20 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <%= link_to root_path do %>
-      <%= image_tag 'Logo_Bric_N.png', class:"logo"%>
-      <% end %>
+            <%= link_to root_path do %>
+            <%= image_tag 'Logo_Bric_N.png', class:"logo"%>
+           <% end %>
+  <div class="">
+      <div class="container d-flex justify-content-center">
+        <nav class="navbar bg-body-tertiary">
+          <div class="container-fluid">
+            <form class="d-flex" role="search">
+              <input class="form-control rounded-pill me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success rounded-pill" type="submit">Search</button>
+            </form>
+          </div>
+         </nav>
+      </div>
+  </div>
+
 </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
