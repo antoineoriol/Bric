@@ -2,23 +2,19 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 
-user = User.create!(email: 'test@test.com', password: 'azerty')
+user1 = User.create!(email: 'etest2@test.com', password: 'azerty')
 
 lego_sets = [
-  { name: "Bateau pirate", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
-  { name: "Station essence", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
-  { name: "Van de voyage", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
-  { name: "Chateau", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." },
-  { name: "Voiture", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." }
+  { title: 'Lego Star Wars 75244', description: 'Lego Star Wars 75244', price: 49.99, user: user1 },
+  { title: 'Lego tour Eiffel', description: 'Lego tour Eiffel', price: 49.99, user: user1 },
+  { title: 'Lego piramide', description: 'Lego piramide', price: 49.99, user: user1 },
+  { title: 'Lego maison', description: 'Lego maison', price: 49.99, user: user1 },
+  { title: 'Lego voiture', description: 'Lego voiture', price: 49.99, user: user1 },
+  { title: 'Lego avion', description: 'Lego avion', price: 49.99, user: user1 },
+  { title: 'Lego train', description: 'Lego train', price: 49.99, user: user1 },
+  { title: 'Lego bateau', description: 'Lego bateau', price: 49.99, user: user1 },
 ]
 
-lego_sets.each do |set|
-  Product.create!(title: set[:name], description: set[:description], price: 0, user: user)
+lego_sets.each do |lego_set|
+  Product.create!(lego_set)
 end
-
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
-
