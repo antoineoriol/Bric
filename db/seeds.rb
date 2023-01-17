@@ -2,7 +2,6 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 Product.destroy_all
-User.destroy_all
 user1 = User.create!(email: 'etest2@test.com', password: 'azerty')
 
 lego_sets = [
@@ -16,15 +15,11 @@ lego_sets = [
   { title: 'Lego bateau', description: 'Lego bateau', price: 49.99, user: user1 }
 ]
 
-#lego_photo = ['star_wars', 'eiffel', 'piramide']
-
-file = File.open("app/assets/images/star_wars.jpg")
-
 lego_sets.each do |lego_set|
   product = Product.create!(
     title: lego_set['title'],
     description: lego_set['description']
   )
-    product.photo.attach(io: file, filename: "lego", content_type: "image/jpg")
-    product.save
+  product.photo.attach(io: file, filename: "lego", content_type: "image/jpg")
+  product.save
 end
