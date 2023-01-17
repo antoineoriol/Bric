@@ -3,12 +3,12 @@
 <div class="container d-flex justify-content-around flex-wrap ">
   <% @produits.each do |produit| %>
     <div class="card mt-5 shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem; height: 16rem;">
-        <img src="../../assets/images/tolga-ulkan-RoFoa6SeIo4-unsplash.jpg" class="card-img-top" alt="...">
-          <div class="card-body ">
-              <strong><%= produit.title %><br></strong>
-              <%= produit.description %><br>
-              <a href="#" class="card-link">Buy it</a>
-          </div>
+      <div class="card-body ">
+      
+          <strong><%= produit.title %><br></strong>
+          <%= produit.description %><br>
+          <a href="#" class="card-link">Buy it</a>
+      </div>
     </div>
   <% end %>
 </div>
