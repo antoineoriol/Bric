@@ -9,7 +9,7 @@
       <div class="card-img-top">
         <div class="card-body justify-content-center">
           <%= cl_image_tag product.photo.key, class: 'photo' %>
-            <h5 class="card-title"><%= product.title %></h5><br>
+            <h5 class="card-title"><%= link_to product.title, product_path(product) %></h5><br>
             <p class="card-text"><%= product.description %></p><br>
             <a href="#" class="rounded-pill btn btn-outline-warning">Acheter</a>
             <a href="#" class="rounded-pill btn btn-outline-success">Louer</a>

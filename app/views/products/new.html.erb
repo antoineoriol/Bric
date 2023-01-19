@@ -1,2 +1,6 @@
-<h1>Products#new</h1>
-<p>Find me in app/views/products/new.html.erb</p>
+<h2>Créer un produit :</h2>
+<%= simple_form_for @product do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.button :submit %>
+<% end %>
