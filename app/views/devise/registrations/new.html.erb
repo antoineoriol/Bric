@@ -1,8 +1,9 @@
+<br>
 <div class="container pt-5 md-5">
 <div class="row justify-content-center">
   <div class="col-12 col-sm-4">
    <div class="form-login">
-    <h2>Sign up</h2>
+    <h2>Création de compte</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
 data: {turbo: false}) do |f| %>
@@ -23,7 +24,7 @@ data: {turbo: false}) do |f| %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Création de compte", class: 'btn btn-outline-primary rounded-pill' %>
   </div>
 <% end %>
 
