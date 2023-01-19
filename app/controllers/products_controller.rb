@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
+  before_action :set_product, only: [:show]
+
   def index
     @products = Product.all
   end
@@ -17,6 +20,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:title, :description, :price, :photo)
