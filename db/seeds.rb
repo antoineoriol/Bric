@@ -20,9 +20,10 @@ lego_sets = [
   { title: 'Lego Pyramide', description: 'La grande pyramide de Gizeh', price: 600, user: user1 },
   { title: 'Lego Maison', description: 'La maison en A', price: 179, user: user1 },
   { title: 'Lego Voiture', description: 'Lamborghini Sián FKP 37', price: 449, user: user1 },
-  { title: 'Lego Avion', description: "L'avion futuriste", price: 119, user: user1 }
+  { title: 'Lego Avion', description: "L'avion futuriste", price: 119, user: user1 },
+  { title: 'Lego train', description: "Le Poudlard Express", price: 499, user: user1 }
 ]
-lego_photos = ['star_wars.jpg', 'eiffel.jpg', 'pyramide.jpg', 'maison.jpg', 'voiture.jpg', 'avion.jpg']
+lego_photos = ['star_wars.jpg', 'eiffel.jpg', 'pyramide.jpg', 'maison.jpg', 'voiture.jpg', 'avion.jpg', 'train.jpg']
 
 puts 'creating legos'
 lego_sets.each_with_index do |lego_set, index|
