@@ -26,7 +26,7 @@
             <a class="nav-link" href="<%= root_path %>">ACCUEIL</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<%= products_index_url %>">PRODUITS</a>
+            <a class="nav-link" href="<%= products_path %>">PRODUITS</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<%= new_user_session_url %>">LOCATION</a>
@@ -36,8 +36,9 @@
             A PROPOS
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">QUI SOMME NOUS ?</a></li>
-            <li><a class="dropdown-item" href="#">AVIS CLIENTS</a></li>
+            <li><a class="dropdown-item" href="#">Qui somme nous?</a></li>
+            <li><a class="dropdown-item" href="<%= new_list_path %>">Creer ma lista lego</a></li>
+            <li><a class="dropdown-item" href="<%= lists_path %>">Ma lista lego</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="<%= new_user_session_url %>">CONTACT</a></li>
           </ul>
