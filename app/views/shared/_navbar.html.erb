@@ -4,11 +4,11 @@
            <% end %>
   <div class="">
       <div class="container d-flex justify-content-center">
-        <nav class="navbar bg-body-tertiary">
+        <nav style="--gp-section-max-width:1120px">
           <div class="container-fluid">
             <form class="d-flex" role="search">
               <input class="form-control rounded-pill me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success rounded-pill" type="submit">Search</button>
+              <button class="btn btn-outline-primary rounded-pill" type="submit">Search</button>
             </form>
           </div>
          </nav>
@@ -31,6 +31,17 @@
           <li class="nav-item">
             <a class="nav-link" href="<%= new_user_session_url %>">LOCATION</a>
           </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            A PROPOS
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">QUI SOMME NOUS ?</a></li>
+            <li><a class="dropdown-item" href="#">AVIS CLIENTS</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="<%= new_user_session_url %>">CONTACT</a></li>
+          </ul>
+        </li>
           <li class="nav-item dropdown">
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
