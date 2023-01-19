@@ -1,13 +1,13 @@
-<div class="cover mb-4 d-flex align-items-center justify-content-center">
-  <div class="text-center text-white">
-    <h1>Save any kind of legos</h1>
+<div class="cover mb-4 d-flex justify-content-center">
+  <div class="text-white">
+    <h1 class="text-banner">Enregistrer quelques legos</h1>
     <h3 class="typed-js" data-controller="typed-js"></h3>
   </div>
 </div>
 <div class="container py-5">
   <div class="d-flex align-items-center justify-content-between mb-3">
-    <h3 class="mb-0">My Lists</h3>
-    <%= link_to "Create a movie list", new_list_path, class: "btn btn-flat" %>
+    <h3 class="mb-0">Ma liste</h3>
+    <%= link_to "Creer ma liste legos", new_list_path, class: "btn btn-outline-primary rounded-pill" %>
   </div>
   <div class="row">
     <% @lists.each do |list| %>
