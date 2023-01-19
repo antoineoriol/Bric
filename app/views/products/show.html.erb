@@ -1,0 +1,17 @@
+<div class="mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center text-black">
+   <h1 class="display-1 pt-5"><% @product.title %></h1>
+  </div>
+</div>
+
+<%= link_to "⬅️ Retour aux produits", products_path %><br>
+<br>
+
+<div>
+    <h2 class="card-text"><%= @product.title %></h2><br>
+    <p class="card-text"><%= @product.description %></p><br>
+    <p class="card-text"><%= @product.price %></p><br>
+    <a href="#" class="rounded-pill btn btn-outline-success">Louer</a>
+</div>
+
+
