@@ -1,8 +1,16 @@
 
 <div>
 <h1>Bienvenue à Bric® City !</h1>
-<p> Population : Une multitude de minifigurines plus impressionnantes les unes que les autres.</p>
+<p> Une multitude de minifigurines plus impressionnantes les unes que les autres.</p>
 <p>Fais comme chez toi.</p>
 </div>
 
-<button type="button" class="btn btn-outline-primary"><a class="nav-link" href="<%= products_path %>">Produits</a></button>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/home/dexter/code/dexter77/antoineoriol/Bric/app/assets/images/logo/lego_banner.jpeg);">
+  <div class="container">
+    <h1>Bienvenue à <strong>Bric®</strong> City !</h1>
+    <p> Une multitude de minifigurines plus impressionnantes les unes que les autres.</p>
+    <div class="clic text-center">
+      <%= link_to "Louer",  products_path, class: "rounded-pill btn btn-outline-warning" %>
+    </div>
+  </div>
+</div>
