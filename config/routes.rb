@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :create, :show]
   end
   resources :reviews, only: :destroy
-  resources :products
-  resources :bookings, only: [:new, :create, :index]
-  get "products/:id/bookings/new", to: "bookings#new"
+  resources :products do
+    resources :bookings, only: [:new, :create]
+  end
+  resources :bookings, only: [:index]
 end
