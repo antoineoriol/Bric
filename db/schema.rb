@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_21_204626) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_22_111124) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_204626) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "lego_sets", force: :cascade do |t|
+    t.string "name"
+    t.integer "pieces"
+    t.string "theme"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -67,6 +76,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_204626) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "list_id"
+    t.string "location"
+    t.string "status", default: "available"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
     t.index ["list_id"], name: "index_products_on_list_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -92,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_204626) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -102,9 +117,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_21_204626) do
   add_foreign_key "bookings", "users"
   add_foreign_key "products", "lists"
   add_foreign_key "products", "users"
-<<<<<<< HEAD
   add_foreign_key "reviews", "lists"
   add_foreign_key "reviews", "products"
-=======
->>>>>>> 94e2bdc14c79381dab226fb74b4b05e90297c0f2
 end

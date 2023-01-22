@@ -3,6 +3,14 @@
    <h1 class="display-1 pt-5">Produits</h1>
   </div>
 </div>
+
+<%= @markers %>
+<div style="width: 50%; height: 500px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
 <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
   <% @products.each do |product| %>
     <div class="card border-light h-100 me-4" style="max-width: 18rem;">
