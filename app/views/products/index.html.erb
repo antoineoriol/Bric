@@ -1,31 +1,34 @@
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center text-white">
-   <h1 class="display-1 pt-5">Produits</h1>
+   <h1 class="display-1 pt-5">Ensembles À Louer</h1>
   </div>
 </div>
 
-<%= @markers %>
-<div style="width: 50%; height: 500px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+<div class="px-5 products-map-grid">
+    <div id='map' style='width: 100%;'
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
 
-<div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-  <% @products.each do |product| %>
-    <div class="card border-light h-100 me-4" style="max-width: 18rem;">
-      <div class="card-img-top">
-        <div class="card-body justify-content-center text-center">
-          <% if product.photo.attached? %>
-            <%= cl_image_tag product.photo.key, class: 'photo' %>
-          <% end %>
-          <h5 class="card-title text-center"><%= link_to product.title, product_path(product) %></h5>
-          <p class="card-text"><%= product.description %></p>
-          <p class="card-text"><%= product.price %> €/ semaine</p>
-          <%# <a href="#" class="rounded-pill btn btn-outline-warning">Acheter</a> %>
-          <%= link_to "Louer",  new_product_booking_path(product), class: "rounded-pill btn btn-outline-warning" %>
+  <div class="product-cards">
+    <% @products.each do |product| %>
+      <div class="card mb-2">
+        <div class="card-block p-3">
+          <div class="products-photo">
+            <% if product.photo.attached? %>
+              <%= cl_image_tag product.photo.key, class: 'card-img-top index-image' %>
+            <% else %>
+            <%= image_tag("unknown.jpg", class:"card-img-top my_product_image index-image") %>
+            <% end %>
+            <h5 class="card-title text-center"><%= link_to product.title, product_path(product) %></h5>
+            <p class="card-text"><%= product.description %></p>
+            <p class="card-text"><%= product.price %> €/ semaine</p>
+            <%# <a href="#" class="rounded-pill btn btn-outline-warning">Acheter</a> %>
+            <%= link_to "Louer",  new_product_booking_path(product), class: "rounded-pill btn btn-outline-warning" %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+ </div>
 </div>
