@@ -15,14 +15,39 @@ puts 'user created'
 # creating legos
 
 lego_sets = [
-  { title: 'Lego Star Wars', description: 'Millennium Falcon', price: 849, user: user1 },
-  { title: 'Lego Tour Eiffel', description: 'La tour Eiffel', price: 629, user: user1 },
-  { title: 'Lego Pyramide', description: 'La grande pyramide de Gizeh', price: 600, user: user1 },
-  { title: 'Lego Maison', description: 'La maison en A', price: 179, user: user1 },
-  { title: 'Lego Voiture', description: 'Lamborghini Sián FKP 37', price: 449, user: user1 },
-  { title: 'Lego Avion', description: "L'avion futuriste", price: 119, user: user1 }
+  { title: 'Lego Star Wars',
+    description: 'Millennium Falcon',
+    address: '47 rue berger 75001, Paris',
+    price: 849,
+    user: user1 },
+  { title: 'Lego Tour Eiffel',
+    description: 'La tour Eiffel',
+    address: '5 Av. Anatole France 75007, Paris',
+    price: 629,
+    user: user1 },
+  { title: 'Lego Pyramide',
+    description: 'La grande pyramide de Gizeh',
+    address: '16 rue du pont neuf 75001, Paris',
+    price: 600, user: user1 },
+  { title: 'Lego Maison',
+    description: 'La maison en A',
+    address: '9 rue mansart 75009, Paris',
+    price: 179, user: user1 },
+  { title: 'Lego Voiture',
+    description: 'Lamborghini Sián FKP 37',
+    address: '28 rue jean de la fontaine 75016, Paris',
+    price: 449, user: user1 },
+  { title: 'Lego Avion',
+    description: "L'avion futuriste",
+    address: '21 rue blondel 75002, Paris',
+    price: 119, user: user1 },
+  { title: 'Lego train',
+    description: "Le Poudlard Express",
+    address: "59 bis rue jouffroy d'abbans 75017, Paris",
+    price: 499, user: user1 }
 ]
-lego_photos = ['star_wars.jpg', 'eiffel.jpg', 'pyramide.jpg', 'maison.jpg', 'voiture.jpg', 'avion.jpg']
+
+lego_photos = ['star_wars.jpg', 'eiffel.jpg', 'pyramide.jpg', 'maison.jpg', 'voiture.jpg', 'avion.jpg', 'train.jpg']
 
 puts 'creating legos'
 lego_sets.each_with_index do |lego_set, index|
