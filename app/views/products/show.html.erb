@@ -1,9 +1,25 @@
-<%= link_to "⬅️ Retour aux produits", products_path %><br>
+<div class="containe">
+  <div class="text-center">
+      <% if @product.photo.attached? %>
+          <%= cl_image_tag @product.photo.key, class: 'photo' %>
+      <% end %>
+      <h2 class="card-text"><%= @product.title %></h2><br>
+      <p class="card-text"><%= @product.description %></p><br>
+      <p class="card-text"><%= @product.price %>€/semaine </p><br>
+      <% if @product.status? %>
+        <p class="card-text text-success">Disponible</p><br>
+      <% else %>
+        <p class="card-text">Indisponible</p><br>
+      <% end %>
+
+      <a href="#" class=""> <%= link_to "Louer", "/products/#{params[:id]}/bookings/new" %></a>
+  </div>
+</div>
+<br>
+<br>
+<br>
 <br>
 
-<div>
-    <h2 class="card-text"><%= @product.title %></h2><br>
-    <p class="card-text"><%= @product.description %></p><br>
-    <p class="card-text"><%= @product.price %></p><br>
-    <a href="#" class="rounded-pill btn btn-outline-success"> <%= link_to "Louer", "/products/#{params[:id]}/bookings/new" %></a>
+<div class="text-decoration-none">
+    <%= link_to "⬅️ Retour aux produits", products_path %>
 </div>

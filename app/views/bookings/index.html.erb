@@ -1,8 +1,16 @@
 <h1>Mes réservations</h1>
 
-  <% @bookings.each do |booking| %>
-  <div class="d-flex flex-column card card-title card-category card-large">
-  <%= booking.product.title %>
-  <%= booking.product.price %>€/semaine
-  </div>
-  <% end %>
+  <% if @bookings.empty? %>
+    <p>Vous n'avez pas encore de réservations</p>
+  <% else %>
+<div class="box d-flex flex-column">
+    <h2>En cours</h2>
+    <% @bookings.each do |booking| %>
+        <div class="d-flex flex-column card card-title card-category card-large">
+          <%= booking.product.title %>
+          <%= booking.product.price %>€/semaine
+          <%# <%= booking.status %>
+        </div>
+      <% end %>
+    <% end %>
+</div>
