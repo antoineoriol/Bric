@@ -6,6 +6,22 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def status
+    @products = Product.where(status: params[:status])
+  end
+
+  def my_products
+    @products = Product.where(user: current_user)
+  end
+
+  def my_bookings
+    @bookings = Booking.where(user: current_user)
+  end
+
+  def my_bookings_as_owner
+    @bookings = Booking.where(product: current_user.products)
+  end
+
   def show
   end
 
