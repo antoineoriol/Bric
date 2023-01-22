@@ -1,0 +1,8 @@
+<h1>Modifier votre avis</h1>
+<div class="container">
+  <%= simple_form_for [ @review ] do |f| %>
+    <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
+    <%= f.input :content, hint: "Modifiez votre commentaire pour cet avis" %>
+    <%= f.submit "Modifier l'avis", class: "btn btn-primary" %>
+  <% end %>
+</div>

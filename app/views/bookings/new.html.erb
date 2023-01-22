@@ -1,5 +1,12 @@
-<%= simple_form_for [@product, @booking] do |f| %>
-  <%= f.input :start_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
-  <%= f.submit %>
-<% end %>
+<h1>Nouvelle réservation</h1>
+<div class="container">
+  <%= simple_form_for [ @product, @booking ] do |f| %>
+    <%= f.input  :first_day, label: 'Enregistrer' %>
+    <%= f.input :last_day, label: 'Retour'  %>
+    <div class="text-center">
+      <%= f.submit "Louer!", class: "btn btn-primary w-50" %><br>
+      <%= link_to "Retour à Tous les produits", products_path, class: "btn btn-outline-primary"  %>
+      <%= link_to "Retour à votre réservation", bookings_path(@booking), class: "btn btn-outline-primary"  %>
+    </div>
+  <% end %>
+</div>
