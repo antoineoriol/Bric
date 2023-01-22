@@ -6,6 +6,22 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def status
+    @products = Product.where(status: params[:status])
+  end
+
+  def my_products
+    @products = Product.where(user: current_user)
+  end
+
+  def my_bookings
+    @bookings = Booking.where(user: current_user)
+  end
+
+  def my_bookings_as_owner
+    @bookings = Booking.where(product: current_user.products)
+  end
+
   def show
   end
 
@@ -15,8 +31,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user = current_user
     if @product.save
-      redirect_to products_path(@products)
+      redirect_to products_path
     else
       render :new
     end

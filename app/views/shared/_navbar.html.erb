@@ -7,7 +7,7 @@
         <nav style="--gp-section-max-width:1120px">
           <div class="container-fluid">
             <form class="d-flex" role="search">
-              <input class="form-control rounded-pill col-6 me-3" type="search" placeholder="Une envie ?" aria-label="Une envie ?">
+              <input class="form-control rounded-pill col-6 me-3" type="search" placeholder="Trouver une oeuvre" aria-label="Une envie ?">
               <button class="btn btn-outline-primary rounded-pill col-4" type="submit">Le(t's) go</button>
             </form>
           </div>
@@ -26,29 +26,17 @@
             <a class="nav-link" href="<%= products_path %>">Produits</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Mon panier</a>
+            <a class="nav-link" href="<%= bookings_path %>">Mes réservations</a>
           </li>
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            À propos
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Qui sommes-nous?</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="<%= new_user_session_url %>">Contact</a></li>
-          </ul>
-        </li>
           <li class="nav-item dropdown">
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/antoineoriol" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Profil</a>
               <a class="dropdown-item" href="<%= new_product_path %>">Ajouter un produit</a>
-              <a class="dropdown-item" href="<%= new_user_session_url %>">Se connecter</a>
+              <%# <a class="dropdown-item" href="<%= new_user_session_url %>
               <a class="dropdown-item" data-turbo-method="delete" href="<%= destroy_user_session_path %>">Se déconnecter</a>
             </div>
           </li>
-          <!--li class="nav-item"-->
-          <!--/li-->
 
       </ul>
     </div>
