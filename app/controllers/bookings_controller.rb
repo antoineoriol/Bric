@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user_id = @user.id
     @booking.product_id = @product.id
-    @booking.total_price = ((@booking.last_day - @booking.first_day).to_i) * @product.price
+    @booking.total_price = ((@booking.end_date - @booking.start_date).to_i) * @product.price
     authorize @booking
     if @booking.save
       redirect_to booking_path(@booking)

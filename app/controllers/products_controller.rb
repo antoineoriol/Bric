@@ -3,7 +3,9 @@ class ProductsController < ApplicationController
   before_action :find_product, only: %i[show edit update destroy reviews]
 
   def index
-    @products = Product.all
+    #@products = Product.all
+    @products = policy_scope(Product)
+
     @markers = @products.geocoded.map do |product|
       {
         lng: product.longitude,
@@ -16,6 +18,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def create
