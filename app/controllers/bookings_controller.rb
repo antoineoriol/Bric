@@ -13,10 +13,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.user = current_user
     @booking.product = @product
-    @booking.save
-    redirect_to bookings_path
+    @booking.user = current_user
+    if @booking.save
+      redirect_to bookings_path
+    else
+      render :new
+    end
   end
 
   def index

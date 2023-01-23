@@ -53,21 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_111124) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "lego_sets", force: :cascade do |t|
-    t.string "name"
-    t.integer "pieces"
-    t.string "theme"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-  end
-
-  create_table "lists", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -75,25 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_111124) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "list_id"
     t.string "location"
     t.string "status", default: "available"
     t.float "latitude"
     t.float "longitude"
     t.string "address"
-    t.index ["list_id"], name: "index_products_on_list_id"
     t.index ["user_id"], name: "index_products_on_user_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.text "comment"
-    t.integer "rating"
-    t.bigint "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "list_id", null: false
-    t.index ["list_id"], name: "index_reviews_on_list_id"
-    t.index ["product_id"], name: "index_reviews_on_product_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -106,7 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_111124) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -115,8 +86,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_111124) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "products"
   add_foreign_key "bookings", "users"
-  add_foreign_key "products", "lists"
   add_foreign_key "products", "users"
-  add_foreign_key "reviews", "lists"
-  add_foreign_key "reviews", "products"
 end
