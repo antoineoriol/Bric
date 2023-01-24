@@ -9,8 +9,11 @@
         <div class="d-flex flex-column card card-title card-category card-large">
           <%= booking.product.title %>
           <%= booking.product.price %>€/semaine
-          <%= link_to %>
           <%# <%= booking.status %>
+          <%= link_to "Supprimer",
+              product_booking_path(booking.product, booking),
+              data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûrs ?"}
+          %>
         </div>
       <% end %>
     <% end %>
