@@ -1,12 +1,16 @@
-<h1>Nouvelle réservation</h1>
-<div class="container">
-  <%= simple_form_for [ @product, @booking ] do |f| %>
-    <%= f.input  :first_day, label: 'Enregistrer' %>
-    <%= f.input :last_day, label: 'Retour'  %>
-    <div class="text-center">
-      <%= f.submit "Louer!", class: "btn btn-primary w-50" %><br>
-      <%= link_to "Retour à Tous les produits", products_path, class: "btn btn-outline-primary"  %>
-      <%= link_to "Retour à votre réservation", bookings_path(@booking), class: "btn btn-outline-primary"  %>
-    </div>
-  <% end %>
+<h1>Mes réservations</h1>
+
+  <% if @bookings.empty? %>
+    <p>Vous n'avez pas encore de réservations</p>
+  <% else %>
+<div class="box d-flex flex-column">
+    <h2>En cours</h2>
+    <% @bookings.each do |booking| %>
+        <div class="d-flex flex-column card card-title card-category card-large">
+          <%= booking.product.title %>
+          <%= booking.product.price %>€/semaine
+          <%# <%= booking.status %>
+        </div>
+      <% end %>
+    <% end %>
 </div>
