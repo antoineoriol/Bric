@@ -1,14 +1,12 @@
 class BookingsController < ApplicationController
   before_action :set_product, only: [:new, :create]
 
-  def new
-    @booking = Booking.new
+  def index
+    @bookings = Booking.all
   end
 
-  def destroy
-    @booking = Booking.find(params[:id])
-    @booking.destroy
-    redirect_to bookings_path
+  def new
+    @booking = Booking.new
   end
 
   def create
@@ -22,8 +20,10 @@ class BookingsController < ApplicationController
     end
   end
 
-  def index
-    @bookings = Booking.all
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path
   end
 
   private
