@@ -1,20 +1,40 @@
 .banner {
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
+  background-image: url('https://images.unsplash.com/photo-1516981879613-9f5da904015f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80');
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode:color;
+  color: rgb(255, 255, 255);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .banner h1 {
-  margin: 0;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 120px;
+  font-family: helvetica;
+  font-weight: bolder;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+  color: #D8DDF8;
 }
 
 .banner p {
-  font-size: 20px;
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 24px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+  margin-bottom: 40px;
+}
+
+.banner-button {
+  color: black;
+  background-color:#D8DDF8;
+  padding: 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.banner-button:hover {
+  color: #D8DDF8;
+  background-color: black;
+  font-weight: bolder;
+  ;
 }
