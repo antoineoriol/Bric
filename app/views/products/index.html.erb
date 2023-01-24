@@ -19,7 +19,7 @@
             <% if product.photo.attached? %>
               <%= cl_image_tag product.photo.key, class: 'card-img-top index-image' %>
             <% else %>
-            <%= image_tag("avion.jpg", class:"card-img-top my_product_image index-image") %>
+             <%= image_tag("CLOUDINARY_URL", class:"card-img-top my_product_image index-image") %>
             <% end %>
             <h5 class="card-title text-center"><%= link_to product.title, product_path(product) %></h5>
             <p class="card-text"><%= product.description %></p>

@@ -3,6 +3,9 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show]
 
   def index
+    if params[:query].present?
+      @products = Product.where("title ILIKE ?", "%#{params[:query]}%")
+    else
     @products = Product.all
     @markers = @products.geocoded.map do |product|
       {
@@ -11,6 +14,7 @@ class ProductsController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {product: product}),
         marker_html: render_to_string(partial: "marker", locals: {product: product})
       }
+    end
     end
   end
 
