@@ -22,20 +22,21 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="<%= products_path %>">Produits</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= bookings_path %>">Mes réservations</a>
-          </li>
+       <% if user_signed_in? %>
           <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/antoineoriol" />
+            <img class="avatar dropdown-toggle sign-up" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/assets/sign_up.png" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Profil</a>
+              <a class="dropdown-item" href="#">Profil - <%= current_user.email %></a>
+              <a class="dropdown-item" href="<%= my_products_path %>">Mes produits</a>
               <a class="dropdown-item" href="<%= new_product_path %>">Ajouter un produit</a>
-              <%# <a class="dropdown-item" href="<%= new_user_session_url %>
+              <a class="dropdown-item" href="<%= bookings_path %>">Mes réservations</a>
               <a class="dropdown-item" data-turbo-method="delete" href="<%= destroy_user_session_path %>">Se déconnecter</a>
             </div>
+            <% else %>
+            <li><%= link_to "S'enregistrer", new_user_registration_path %></li>
+            <%= link_to "Se connecter", new_user_session_path, class: 'btn btn-outline-primary rounded-pill' %>
+
+            <% end %>
           </li>
 
       </ul>

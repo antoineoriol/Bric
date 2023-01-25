@@ -1,0 +1,50 @@
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center text-white">
+   <h1 class="display-1 pt-5">Mes produits !!</h1>
+  </div>
+</div>
+
+<div class="my_products_page">
+  <div class="my_products_container">
+
+    <% unless current_user.products.nil? %>
+      <% @products.each do |product| %>
+        <div class="product_row">
+          <div class="photo">
+            <% if product.photo.key.present? %>
+              <%= cl_image_tag(product.photo.key, class:"my-product-image") %>
+            <% else %>
+              <%= image_tag("unknown.jpg", class:"my-product-image") %>
+            <% end %>
+            <p><%= product.address %></p>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <% if policy(product).edit? %>
+              <%= link_to 'Edit', edit_product_path(product), class:"btn btn-primary" %>
+            <% end %>
+                      <% unless product.bookings.any? %>
+          <div class="remove_product_button">
+
+            <%= link_to product_path(product), method:"delete", data: { confirm: "Êtes-vous sûr?" }, class:"bin" do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+
+            <% end %>
+          </div>
+          </div>
+          <% else %>
+          <div class="remove_product_button_disabled">
+            <i class="fa fa-trash" aria-hidden="true" title="Ce produit a une réservation en cours"></i>
+          </div>
+          <% end %>
+          </div>
+        </div>
+        </div>
+        <hr>
+      <% end %>
+    <% end %>
+    <div class="d-flex align-items-center">
+    <%= link_to "Ajouter un nouveau produit", new_product_path(@product), class:"btn btn-primary add_new_product" %>
+    </div>
+  </div>
+</div>

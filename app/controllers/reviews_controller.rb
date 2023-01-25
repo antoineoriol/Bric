@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :find_user
-  before_action :find_booking, only: [ :new, :create ]
-  before_action :find_review, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_user
+  before_action :set_booking, only: %i[new create]
+  before_action :set_review, only: %i[show edit update destroy]
 
   def index
     reviews_all = policy_scope(Review)
@@ -51,11 +51,11 @@ class ReviewsController < ApplicationController
 
   private
 
-  def find_user
+  def set_user
     @user = current_user
   end
 
-  def find_booking
+  def set_booking
     @booking = Booking.find(params[:booking_id])
   end
 
@@ -63,7 +63,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:rating, :content)
   end
 
-  def find_review
+  def set_review
     @review = Review.find(params[:id])
   end
 end

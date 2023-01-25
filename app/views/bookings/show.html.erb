@@ -1,3 +1,9 @@
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center text-white">
+   <h1 class="display-1 pt-5">Votre reservation</h1>
+  </div>
+</div>
+
 <% product = Product.find(@booking.product_id) %>
 <div class="container">
   <div class="row d-flex align-items-center">
@@ -17,8 +23,8 @@
       <% end %>
     </div>
     <div class="info show_booking col-4">
-      <p style="font-size: 16px;"><span class="font-weight-bold">À partir de: </span><%= @booking.first_day.strftime("%e-%m-%Y")  %></p>
-      <p style="font-size: 16px;"><span class="font-weight-bold">jusqu'a: </span><%= @booking.last_day.strftime("%e-%m-%Y")  %></p>
+      <p style="font-size: 16px;"><span class="font-weight-bold">À partir de: </span><%= @booking.start_date.strftime("%e-%m-%Y")  %></p>
+      <p style="font-size: 16px;"><span class="font-weight-bold">jusqu'a: </span><%= @booking.end_date.strftime("%e-%m-%Y")  %></p>
       <p style="font-size: 16px;"><span class="font-weight-bold">Addresse: </span><%= product.address  %></p>
       <p style="font-size: 16px;"><span class="font-weight-bold">Description: </span><%= product.description  %></p>
       <p style="font-size: 16px;"><span class="font-weight-bold">Nombre de piéces: </span><%= product.capacity  %></p>
@@ -60,22 +66,22 @@
                 <% end %>
               </div>
               <p><%= @booking.review.content %></p>
-              <%= link_to "Your review", review_path(@booking.review), class: "btn btn-outline-dark" %>
+              <%= link_to "Votre avis", review_path(@booking.review), class: "btn btn-outline-dark" %>
             </div>
           </div>
         <% else %>
-          <%= link_to 'Add a review', new_booking_review_path(@booking), class: "btn btn-primary mx-2" %>
+          <%= link_to 'Ajouter un commentaire', new_booking_review_path(@booking), class: "btn btn-primary mx-2" %>
         <% end %>
       </div>
     </div>
   </div>
   <div class="booking-options">
-    <%= link_to "Delete this booking", booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary mx-2" %>
+    <%= link_to "Supprimer cette réservation", booking_path(@booking), method: :delete, data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-primary mx-2" %>
       <% if policy(@booking).edit? %>
-      <%= link_to 'Edit this booking', edit_booking_path(@booking), class: "btn btn-primary mx-2" %>
+      <%= link_to 'Modifier cette réservation', edit_booking_path(@booking), class: "btn btn-primary mx-2" %>
     <% end %>
     <% if policy(@booking).destroy? %>
-      <%= link_to 'Back to your bookings', bookings_path, class: "btn btn-primary mx-2" %>
+      <%= link_to 'Retour à vos réservations', bookings_path, class: "btn btn-primary mx-2" %>
     <% end %>
   </div>
 </div>

@@ -1,9 +1,14 @@
-<h1>Modifier votre reservation</h1>
+
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center text-white">
+   <h1 class="display-1 pt-5">Modifier votre reservation</h1>
+  </div>
+</div>
 
 <div class="container">
   <%= simple_form_for [ @booking ] do |f| %>
-  <%= f.input :first_day %>
-  <%= f.input :last_day %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
   <%= f.submit "Mettre à jour", class: "btn btn-outline-primary" %>
 <% end %>
 </div>

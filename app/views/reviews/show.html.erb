@@ -2,7 +2,7 @@
 <% @product = Product.find(@booking.product_id) %>
 <div class="container">
   <div class="d-flex justify-content-around align-items-center">
-    <h1>Your <strong class="text-muted"><%= @product.address %></strong> review</h1>
+    <h1>Your <strong class="text-muted"><%= @product.address %></strong> Avis</h1>
     <%= link_to "Back to your stay", booking_path(@booking), class: "btn btn-primary btn-sm" %>
   </div>
   <div class="review-card d-flex row justify-content-around">
@@ -42,17 +42,17 @@
           </div>
         <% end %>
       </div>
-      <p>Comment: <strong><%= @review.content %></strong></p>
+      <p>Comentaire: <strong><%= @review.content %></strong></p>
 
-      <p>From <strong><%= @booking.first_day_of_booking %></strong> to <strong><%= @booking.last_day_of_booking %></strong></p>
+      <p>À partir de <strong><%= @booking.start_date %></strong> jusq'au <strong><%= @booking.end_date %></strong></p>
       <p>Total price <strong><%= @booking.total_price %>€</strong></p>
 
       <div>
-        <%= link_to "Edit", edit_review_path(@review), class: "btn btn-primary btn-sm" %>
-        <%= link_to "Delete",
+        <%= link_to "Modifier", edit_review_path(@review), class: "btn btn-primary btn-sm" %>
+        <%= link_to "Suprimer",
         review_path(@review),
         method: :delete,
-        data: { confirm: "Are you sure?" }, class: "btn btn-primary btn-sm" %>
+        data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-primary btn-sm" %>
       </div>
     </div>
   </div>

@@ -4,10 +4,9 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string :title
       t.text :description
       t.string :address
-      t.string :city
       t.string :photo
-      t.integer :capacity
       t.integer :price
+      t.string :location
       t.float :latitude
       t.float :longitude
       t.references :user, null: false, foreign_key: true
