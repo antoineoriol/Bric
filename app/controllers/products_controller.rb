@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   before_action :set_user, :database_search
   before_action :set_product, only: %i[show edit update destroy reviews]
@@ -25,17 +25,21 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = @user.id
+    @product = current_user.products.build(product_params)
     authorize @product
     if @product.save
-      redirect_to product_path(@product)
+     flash[:notice] = "Product successfully listed for sale!"
+     redirect_to @product
     else
-      render :new
+     flash[:alert] = "Failed to list product for sale. Please try again."
+     render :new
     end
   end
 
   def show
     @product = Product.find(params[:id])
     @booking = Booking.new
+    @bookings = @product.bookings.where(status: "pending")
   end
 
   def edit
@@ -43,16 +47,28 @@ class ProductsController < ApplicationController
 
   def update
     @product.update(product_params)
-    redirect_to product_path(@product)
+    @booking = @product.bookings.find(params[:booking_id])
+    if params[:status] == "accept"
+      @booking.update(status: "accepted")
+      flash[:notice] = "Booking request accepted!"
+    elsif params[:status] == "reject"
+      @booking.update(status: "rejected")
+      flash[:notice] = "Booking request rejected!"
+    else
+      flash[:alert] = "Invalid status. Please try again."
+    end
+    redirect_to @product
   end
 
   def destroy
     @product.destroy
+    authorize @products
     redirect_to my_products_path
   end
 
   def my_products
     @products = current_user.products
+    @bookings = @products.map {|p| p.bookings}.flatten
     authorize @products
   end
 
@@ -98,7 +114,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :start_date, :end_date, :capacity, :price, :photo, :price, :capacity, :photo)
+    params.require(:product).permit(:title, :description, :address, :city, :photo, :capacity, :price, :latitude, :longitude, :start_date, :end_date, :status)
   end
 
   def set_product

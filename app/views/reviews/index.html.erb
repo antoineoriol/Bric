@@ -46,16 +46,16 @@
           <p>Total price <strong><%= @booking.total_price %>€</strong></p>
 
           <div>
-            <%= link_to "View", review_path(review), class: "text-success" %>
+            <%= link_to "Voir", review_path(review), class: "text-success" %>
             <%= link_to "Éditer", edit_review_path(review), class: "text-warning" %>
             <%= link_to "Supprimer",
             review_path(review),
             method: :delete,
-            data: { confirm: "Are you sure?" }, class: "text-danger" %>
+            data: { confirm: "Êtes-vous sûr?" }, class: "text-danger" %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
-  <%= link_to 'Bookings', bookings_path, class: "btn btn-primary" %>
+  <%= link_to 'Réservations', bookings_path, class: "btn btn-primary" %>
 </div>

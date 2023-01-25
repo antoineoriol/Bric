@@ -4,33 +4,6 @@
   </div>
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Renter</th>
-      <th>Dates</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookings.each do |booking| %>
-      <tr>
-        <td><%= booking.user.name %></td>
-        <td><%= booking.start_date %> to <%= booking.end_date %></td>
-        <td>
-          <%= link_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-success" %>
-          <%= link_to "Reject", reject_booking_path(booking), method: :patch, class: "btn btn-danger" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-
-
-
-
 <div class="py-5">
   <div class="container">
     <div class="row hidden-md-up">

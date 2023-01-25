@@ -7,6 +7,28 @@
 <div class="my_products_page">
   <div class="my_products_container">
 
+    <table>
+  <thead>
+    <tr>
+      <th>Renter</th>
+      <th>Dates</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.user_id %></td>
+        <td><%= booking.start_date %> to <%= booking.end_date %></td>
+        <td>
+          <%= link_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-success" %>
+          <%= link_to "Reject", reject_booking_path(booking), method: :patch, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
     <% unless current_user.products.nil? %>
       <% @products.each do |product| %>
         <div class="product_row">
@@ -23,7 +45,7 @@
             <% if policy(product).edit? %>
               <%= link_to 'Edit', edit_product_path(product), class:"btn btn-primary" %>
             <% end %>
-                      <% unless product.bookings.any? %>
+            <% unless product.bookings.any? %>
           <div class="remove_product_button">
 
             <%= link_to product_path(product), method:"delete", data: { confirm: "Êtes-vous sûr?" }, class:"bin" do %>
@@ -45,6 +67,8 @@
     <% end %>
     <div class="d-flex align-items-center">
     <%= link_to "Ajouter un nouveau produit", new_product_path(@product), class:"btn btn-primary add_new_product" %>
+    <%= link_to 'Back to product', products_path, class: "btn btn-primary" %>
+
     </div>
   </div>
 </div>

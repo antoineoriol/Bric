@@ -25,6 +25,14 @@ class BookingPolicy < ApplicationPolicy
     user_is_owner_or_admin?
   end
 
+  def accept?
+    user_is_owner_or_admin?
+  end
+
+  def reject?
+    user_is_owner_or_admin?
+  end
+
   private
 
   def user_is_owner_or_admin?
