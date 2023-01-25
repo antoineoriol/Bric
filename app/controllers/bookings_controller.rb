@@ -1,11 +1,28 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_user
   before_action :set_booking, only: %i[show edit update destroy]
-  before_action :set_product, only: %i[:new, :create]
+  before_action :set_product, only: %i[new create]
 
+
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "accepted")
+    @booking.product.update(available: false)
+    redirect_to bookings_path, notice: "Booking accepted"
+  end
+
+  def reject
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "rejected")
+    redirect_to bookings_path, notice: "Booking rejected"
+  end
+  
   def index
     @bookings = Booking.all
     @bookings = policy_scope(Booking)
+    @bookings = current_user.products.map(&:bookings).flatten.select { |b| b.status == "pending" }
   end
 
   def new
