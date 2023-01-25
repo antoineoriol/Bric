@@ -23,8 +23,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
        <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle sign-up" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/assets/sign_up.png" />
+          <li class="nav-item dropdown sign-up">
+            <img class="avatar dropdown-toggle sign-in" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/assets/sign_in.png" />
+            <img class="overlay" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="/assets/sign_up.png" />
+
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Profil - <%= current_user.email %></a>
               <a class="dropdown-item" href="<%= my_products_path %>">Mes produits</a>
