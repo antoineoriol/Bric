@@ -1,9 +1,15 @@
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center text-white">
+   <h2 class="display-1 pt-5">Commentaires</h2>
+  </div>
+</div>
+
 <% @booking = Booking.find(@review.booking_id) %>
 <% @product = Product.find(@booking.product_id) %>
 <div class="container">
   <div class="d-flex justify-content-around align-items-center">
-    <h1>Your <strong class="text-muted"><%= @product.address %></strong> Avis</h1>
-    <%= link_to "Back to your stay", booking_path(@booking), class: "btn btn-primary btn-sm" %>
+    <h1><strong class="text-muted"><%= @product.title %></strong></h1>
+    <%= link_to "Retour sur votre reservation", booking_path(@booking), class: "btn btn-primary btn-sm" %>
   </div>
   <div class="review-card d-flex row justify-content-around">
     <div class="col-5">
@@ -42,10 +48,10 @@
           </div>
         <% end %>
       </div>
-      <p>Comentaire: <strong><%= @review.content %></strong></p>
-
-      <p>À partir de <strong><%= @booking.start_date %></strong> jusq'au <strong><%= @booking.end_date %></strong></p>
-      <p>Total price <strong><%= @booking.total_price %>€</strong></p>
+      <p><strong>Comentaire: </strong><%= @review.content %></p>
+      <p><strong>Adresse: </strong><%= @product.address %></p>
+      <p><strong>À partir de: </strong><%= @booking.start_date %><strong> jusq'au </strong><%= @booking.end_date %></p>
+      <p><strong>Total price: </strong><%= @booking.total_price %>€</p>
 
       <div>
         <%= link_to "Modifier", edit_review_path(@review), class: "btn btn-primary btn-sm" %>

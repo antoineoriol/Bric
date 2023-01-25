@@ -1,4 +1,9 @@
-<h1>Mes avis</h1>
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center text-white">
+   <h2 class="display-1 pt-5">Mes avis</h2>
+  </div>
+</div>
+
 <div class="container">
   <div class="row d-flex justify-content-center">
     <% @reviews.each do |review| %>
@@ -42,7 +47,7 @@
 
           <p><%= review.content %></p>
 
-          <p>À partir de <strong><%= @booking.start_date %></strong> jusqu'au <strong><%= @booking.end_day %></strong></p>
+          <p>À partir de <strong><%= @booking.start_date %></strong> jusqu'au <strong><%= @booking.end_date %></strong></p>
           <p>Total price <strong><%= @booking.total_price %>€</strong></p>
 
           <div>

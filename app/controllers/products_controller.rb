@@ -43,15 +43,17 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    Product.find(params[:id])
+    authorize @product
   end
 
   def update
     @product.update(product_params)
     @booking = @product.bookings.find(params[:booking_id])
-    if params[:status] == "accept"
+    if params[:status] == false
       @booking.update(status: "accepted")
       flash[:notice] = "Booking request accepted!"
-    elsif params[:status] == "reject"
+    elsif params[:status] == false
       @booking.update(status: "rejected")
       flash[:notice] = "Booking request rejected!"
     else
@@ -62,8 +64,8 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    authorize @products
     redirect_to my_products_path
+    authorize @products
   end
 
   def my_products

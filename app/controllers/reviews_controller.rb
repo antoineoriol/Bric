@@ -44,9 +44,9 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    authorize @review
     @review.destroy
     redirect_to bookings_path
+    authorize @review
   end
 
   private

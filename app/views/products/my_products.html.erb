@@ -1,6 +1,6 @@
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center text-white">
-   <h1 class="display-1 pt-5">Mes produits !!</h1>
+   <h2 class="display-1 pt-5">Mes produits !!</h2>
   </div>
 </div>
 
@@ -12,6 +12,7 @@
     <tr>
       <th>Renter</th>
       <th>Dates</th>
+      <th>Produit</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -20,9 +21,16 @@
       <tr>
         <td><%= booking.user_id %></td>
         <td><%= booking.start_date %> to <%= booking.end_date %></td>
+        <td><%= booking.product.title %></td>
         <td>
-          <%= link_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-success" %>
-          <%= link_to "Reject", reject_booking_path(booking), method: :patch, class: "btn btn-danger" %>
+          <% if booking.status == "pending" %>
+          <%= link_to "Accept", accept_booking_path(booking), method: :get, class: "btn btn-success" %>
+          <%= link_to "Reject", reject_booking_path(booking), method: :get, class: "btn btn-danger" %>
+          <% else %>
+            <% if booking.update(status: "accepted") %>
+              <%= booking.destroy %>
+            <% end %>
+          <% end %>
         </td>
       </tr>
     <% end %>

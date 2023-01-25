@@ -10,15 +10,19 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking, :accept?
     @booking.update(status: "accepted")
-    @booking.product.update(status: false)
-    redirect_to my_products_path, notice: "Booking accepted"
+    if @booking.product.update(status: true)
+    redirect_to my_products_path, notice: "Réservation acceptée"
+    else
+      render :new
+    end
   end
 
   def reject
     @booking = Booking.find(params[:id])
     authorize @booking, :reject?
     @booking.update(status: "rejected")
-    redirect_to my_products_path, notice: "Booking rejected"
+    @booking.product.update(status: false)
+    redirect_to my_products_path, notice: "Réservation refusée"
   end
 
   def index
@@ -88,6 +92,6 @@ class BookingsController < ApplicationController
 
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :status, :total_price)
   end
 end
