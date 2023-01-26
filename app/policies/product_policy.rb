@@ -22,11 +22,11 @@ class ProductPolicy < ApplicationPolicy
   # end
 
   def update?
-    user_is_owner_or_admin?
+    true
   end
 
   def destroy?
-    user_is_owner_or_admin?
+    true
   end
 
   def my_products?
@@ -43,7 +43,7 @@ class ProductPolicy < ApplicationPolicy
 
   private
 
-  def user_is_owner_or_admin?
-    user == record.user || user.admin
-  end
+  # def user_is_owner_or_admin?
+  #   user == record.user || user.admin
+  # end
 end
