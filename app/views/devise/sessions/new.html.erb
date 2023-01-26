@@ -5,7 +5,7 @@
 
 <h2>Connexion</h2>
 <h6>Si vous n'avez pas encore créé de compte, merci de vous
-<%= link_to "registration", new_registration_path(resource_name) %> au préalable.</h6>
+<%= link_to "enregistrer", new_registration_path(resource_name) %> au préalable.</h6>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),
 data: {turbo: false}) do |f| %>

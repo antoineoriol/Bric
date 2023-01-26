@@ -10,7 +10,7 @@ class Product < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
 
-  has_one_attached :photo
+  has_one_attached :photos
   has_many :reviews, through: :bookings
 
   validates :title, presence: true, uniqueness: true

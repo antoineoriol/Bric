@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_24_184236) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_23_000025) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,14 +43,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_184236) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "total_price"
     t.date "start_date"
     t.date "end_date"
+    t.string "status", default: "pending"
+    t.float "total_price"
     t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status", default: "pending"
     t.index ["product_id"], name: "index_bookings_on_product_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -59,18 +59,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_184236) do
     t.string "title"
     t.text "description"
     t.string "address"
-    t.string "city"
     t.string "photo"
-    t.integer "capacity"
     t.integer "price"
+    t.string "city"
+    t.integer "capacity"
+    t.string "location"
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "status", default: true
     t.float "latitude"
     t.float "longitude"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status", default: true
-    t.date "start_date"
-    t.date "end_date"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -93,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_184236) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -103,5 +105,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_184236) do
   add_foreign_key "bookings", "users"
   add_foreign_key "products", "users"
   add_foreign_key "reviews", "bookings"
-
 end
