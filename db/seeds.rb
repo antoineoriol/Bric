@@ -3,6 +3,7 @@
 #
 #--- cleaning database
 puts 'cleaning database'
+Booking.destroy_all
 Product.destroy_all
 User.destroy_all
 puts 'database cleaned'
