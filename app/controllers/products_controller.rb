@@ -33,10 +33,10 @@ class ProductsController < ApplicationController
     @product = current_user.products.build(product_params)
     authorize @product
     if @product.save
-     flash[:notice] = "Produit mis en vente avec succès !"
+     flash[:notice] = "Product successfully listed for sale!"
      redirect_to @product
     else
-     flash[:alert] = "Échec de la liste des produits à vendre. Veuillez réessayer."
+     flash[:alert] = "Failed to list product for sale. Please try again."
      render :new
     end
   end
@@ -57,12 +57,12 @@ class ProductsController < ApplicationController
     @booking = @product.bookings.find(params[:booking_id])
     if params[:status] == false
       @booking.update(status: "accepted")
-      flash[:notice] = "Demande de réservation acceptée!"
+      flash[:notice] = "Booking request accepted!"
     elsif params[:status] == false
       @booking.update(status: "rejected")
-      flash[:notice] = "Demande de réservation rejetée !"
+      flash[:notice] = "Booking request rejected!"
     else
-      flash[:alert] = "Statut invalide. Veuillez réessayer."
+      flash[:alert] = "Invalid status. Please try again."
     end
     redirect_to @product
   end
@@ -121,7 +121,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :address, :city, :capacity, :price, :latitude, :longitude, :start_date, :end_date, :status, :photo)
+    params.require(:product).permit(:title, :description, :address, :city, :photo, :capacity, :price, :latitude, :longitude, :start_date, :end_date, :status)
   end
 
   def set_product

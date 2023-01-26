@@ -21,23 +21,14 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking, :reject?
     @booking.update(status: "rejected")
-    if @booking.product.update(status: false)
+    @booking.product.update(status: false)
     redirect_to my_products_path, notice: "Réservation refusée"
-    else
-      render :new
-    end
   end
 
   def index
     #@bookings = Booking.all
     @bookings = policy_scope(Booking)
     @bookings = current_user.products.map(&:bookings).flatten.select { |b| b.status == "pending" }
-    @bookings.each do |booking|
-      if booking.accept
-        booking.update(status: "accepted")
-    end
-    redirect_to bookings_path, notice: "Toutes les réservations en attente ont été acceptées."
-    end
   end
 
   def new
@@ -57,6 +48,8 @@ class BookingsController < ApplicationController
     authorize @booking
     if @booking.save
       redirect_to booking_path(@booking)
+    else
+      render :new
     end
   end
 
@@ -78,9 +71,10 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-  authorize @booking
-  @booking.destroy
-  redirect_to bookings_path
+  @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.destroy
+    redirect_to bookings_path
   end
 
   private
