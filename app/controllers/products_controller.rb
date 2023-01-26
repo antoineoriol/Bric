@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
   def index
     #@products = Product.all
     @products = policy_scope(Product)
+    if params[:query].present?
+      @products = Product.where("title ILIKE ?", "%#{params[:query]}%")
+    else
+    @products = Product.all
     @markers = @products.geocoded.map do |product|
       {
         lng: product.longitude,
@@ -14,6 +18,7 @@ class ProductsController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {product: product}),
         marker_html: render_to_string(partial: "marker", locals: {product: product})
       }
+    end
     end
   end
 

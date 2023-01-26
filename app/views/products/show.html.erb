@@ -1,6 +1,24 @@
+
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center text-white">
    <h2 class="display-1 pt-5">Ensembles À Louer</h2>
+
+<div class="container">
+  <div class="text-center">
+      <% if @product.photo.attached? %>
+          <%= cl_image_tag @product.photo.key, class: 'photo' %>
+      <% end %>
+      <h2 class="card-text"><%= @product.title %></h2><br>
+      <p class="card-text"><%= @product.description %></p><br>
+      <p class="card-text"><%= @product.price %>€/semaine </p><br>
+      <% if @product.status? %>
+        <p class="card-text text-success">Disponible</p><br>
+      <% else %>
+        <p class="card-text">Indisponible</p><br>
+      <% end %>
+
+      <a href="#" class=""> <%= link_to "Louer", "/products/#{params[:id]}/bookings/new" %></a>
+
   </div>
 </div>
 
@@ -80,6 +98,6 @@
         <%= link_to 'Suprimer', @product, method: :delete, class:"btn btn-primary", data: {confirm: "sure?"} %>
       <% end %>
       <% if policy(Product).create? %>
-        <%= link_to "Back to All products", products_path, class: "btn btn-primary"  %>
+        <%= link_to "Retour à Tous les produits", products_path, class: "btn btn-primary"  %>
       <% end %>
     </div>
