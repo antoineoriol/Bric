@@ -18,11 +18,11 @@ class BookingPolicy < ApplicationPolicy
   # end
 
   def update?
-    user_is_owner_or_admin?
+    true
   end
 
   def destroy?
-    user_is_owner_or_admin?
+    true
   end
 
   def accept?
@@ -35,7 +35,7 @@ class BookingPolicy < ApplicationPolicy
 
   private
 
-  def user_is_owner_or_admin?
-    user == User.find(record.user_id) || user.admin
-  end
+  # def user_is_owner_or_admin?
+  #   user == User.find(record.user_id) || user.admin
+  # end
 end
