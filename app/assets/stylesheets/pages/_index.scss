@@ -1,8 +1,11 @@
 // Import page-specific CSS files here.
-@import "home";
 @import "products";
 @import "reviews";
+@import "my_bookings";
+@import "_new";
+@import "show_product";
 @import "my_products";
+@import "home";
 
 .products-photo {
   margin-bottom: 16px;

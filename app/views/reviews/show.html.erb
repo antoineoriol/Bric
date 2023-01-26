@@ -1,0 +1,65 @@
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center text-white">
+   <h2 class="display-1 pt-5">Commentaires</h2>
+  </div>
+</div>
+
+<% @booking = Booking.find(@review.booking_id) %>
+<% @product = Product.find(@booking.product_id) %>
+<div class="container">
+  <div class="d-flex justify-content-around align-items-center">
+    <h1><strong class="text-muted"><%= @product.title %></strong></h1>
+    <%= link_to "Retour sur votre reservation", booking_path(@booking), class: "btn btn-primary btn-sm" %>
+  </div>
+  <div class="review-card d-flex row justify-content-around">
+    <div class="col-5">
+      <% if @product.photo.key.nil? %>
+        <%= image_tag "no-image.png", class:"review-image" %>
+      <% else %>
+        <%= cl_image_tag @product.photo.key, class:"review-image" %>
+      <% end %>
+    </div>
+    <div class="col-5">
+      <div class="star-rating my-3">
+        <p>Rating:</p>
+        <% if @review.rating == 5 %>
+          <div class="d-flex">
+            <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i>
+          </div>
+        <% elsif @review.rating == 4 %>
+          <div class="d-flex">
+            <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i>
+          </div>
+        <% elsif @review.rating == 3 %>
+          <div class="d-flex">
+            <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+          </div>
+        <% elsif @review.rating == 2 %>
+          <div class="d-flex">
+            <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+          </div>
+        <% elsif @review.rating == 1 %>
+          <div class="d-flex">
+            <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+          </div>
+        <% else %>
+          <div class="d-flex">
+            <i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+          </div>
+        <% end %>
+      </div>
+      <p><strong>Comentaire: </strong><%= @review.content %></p>
+      <p><strong>Adresse: </strong><%= @product.address %></p>
+      <p><strong>À partir de: </strong><%= @booking.start_date %><strong> jusq'au </strong><%= @booking.end_date %></p>
+      <p><strong>Total price: </strong><%= @booking.total_price %>€</p>
+
+      <div>
+        <%= link_to "Modifier", edit_review_path(@review), class: "btn btn-primary btn-sm" %>
+        <%= link_to "Suprimer",
+        review_path(@review),
+        method: :delete,
+        data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-primary btn-sm" %>
+      </div>
+    </div>
+  </div>
+</div>
