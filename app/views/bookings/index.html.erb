@@ -1,4 +1,46 @@
-<h1>Mes réservations</h1>
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center text-white">
+   <h2 class="display-1 pt-5">Vos reservation</h2>
+  </div>
+</div>
+
+<div class="py-5">
+  <div class="container">
+    <div class="row hidden-md-up">
+      <% @bookings.each do |booking| %>
+        <% product = Product.find(booking.product_id) %>
+        <div class="col-md-4">
+          <div class="card mb-2">
+            <div class="card-block p-3">
+              <% if product.photo.key.present? %>
+                <%= cl_image_tag booking.product.photo.key, crop: :fill, class:"product_pic card-img-top" %>
+              <% else %>
+                <%= image_tag("unknown.jpg", class:"product_pic card-img-top") %>
+              <% end %>
+              <p class="card-title">Ville: <%= product.city %></p>
+              <p class="card-subtitle text-muted"><span class="font-weight-bold">Prix ​​total:</span> <%= booking.total_price %> Euros</p>
+              <small class="card-text p-y-1"><span class="font-weight-bold">Description:</span> <%= product.description %> people</small><br>
+              <%= link_to 'Vérifiez-le!', booking, class: "btn btn-outline-primary" %> <br>
+              <% if policy(booking).edit? %>
+                <%= link_to 'Éditer', edit_booking_path(booking), class: "btn btn-outline-primary" %>
+              <% end %>
+              <% if policy(booking).destroy? %>
+                <%= link_to 'Supprimer', booking, method: :delete, data: {confirm: "Etes vous sur ?"}, class: "btn btn-outline-primary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="container">
+        <% if policy(Product).create? %>
+          <%= link_to "Retour à tous les produits !", products_path, class:"btn btn-outline-primary" %>
+        <% end %>
+        <%= link_to 'Tous vos avis', reviews_path, class: "btn btn-outline-primary" %>
+      </div>
+    </div>
+  </div>
 
   <% if @bookings.empty? %>
     <p>Vous n'avez pas encore de réservations</p>
@@ -14,4 +56,5 @@
         </div>
       <% end %>
   <% end %>
+
 </div>

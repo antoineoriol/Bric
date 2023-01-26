@@ -1,18 +1,290 @@
-<%#
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1516981879613-9f5da904015f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80');">
-  <div class="container">
-    <h1>Bienvenue à <strong>Bric®</strong> City !</h1>
-    <p> Une multitude de minifigurines plus impressionnantes les unes que les autres.</p>
-    <div class="clic text-center mt-5">
-      <%= link_to "Louer",  products_path, class: "rounded-pill btn btn-outline-warning" %>
-    <%# </div>
-  </div>
-</div> %>
 
 <section class="banner" style="height: 100vh; width: 100%">
   <div class="banner-content">
     <h1>Construire à l'infini</h1>
-    <p>Proposez vos Lego. Louez-en d'autres. N'arrêtez jamais de créer.</p>
+    <p><span data-controller="typed-js"></span></p>
     <%= link_to "Découvrir",  products_path, class: "banner-button" %>
   </div>
 </section>
+
+<hr>
+    <h3>Découvrez nos emplacements les mieux notés!</h3>
+
+   <div id="carouselExampleIndicators" class="carousel slide shadow-sm border" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row top_rated_preview align-items-center review-card">
+          <div class="col-4">
+            <% if @top_rated[0].photo.key.nil? %>
+              <%= image_tag "no-image.png", class:"root-image" %>
+            <% else %>
+              <%= cl_image_tag @top_rated[0].photo.key, class:"root-image" %>
+            <% end %>
+          </div>
+          <div class="col-6 review_text">
+            <div>
+              <h4 class="py-4"><%= @top_rated[0].address %></h4>
+              <div class="my-1">
+                <% if @top_rated[0].average_rating[:average] == 5 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i>
+                    <p>- (<%= @top_rated[0].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[0].average_rating[:average] == 4 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[0].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[0].average_rating[:average] == 3 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[0].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[0].average_rating[:average] == 2 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[0].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[0].average_rating[:average] == 1 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[0].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% else %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[0].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% end %>
+              </div>
+              <p><%= @top_rated[0].description %></p>
+              <%= link_to "Details", product_path(@top_rated[0]), class: "btn btn-outline-dark" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" >
+        <div class="row top_rated_preview align-items-center review-card">
+          <div class="col-4">
+            <% if @top_rated[1].photo.key.present? %>
+              <%= cl_image_tag @top_rated[1].photo.key, class:"root-image" %>
+            <% else %>
+              <%= image_tag "no-image.png", class:"root-image" %>
+            <% end %>
+          </div>
+          <div class="col-8 review_text">
+            <div>
+              <h4 class="py-4"><%= @top_rated[1].address %></h4>
+              <div class="my-1">
+                <% if @top_rated[1].average_rating[:average] == 5 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i>
+                    <p>- (<%= @top_rated[1].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[1].average_rating[:average] == 4 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[1].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[1].average_rating[:average] == 3 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[1].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[1].average_rating[:average] == 2 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[1].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[1].average_rating[:average] == 1 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[1].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% else %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[1].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% end %>
+              </div>
+              <p><%= @top_rated[1].description %></p>
+              <%= link_to "Details", product_path(@top_rated[1]), class: "btn btn-outline-dark" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item" >
+        <div class="row top_rated_preview align-items-center review-card">
+          <div class="col-4">
+            <% if @top_rated[2].photo.key.nil? %>
+              <%= image_tag "no-image.png", class:"root-image" %>
+            <% else %>
+              <%= cl_image_tag @top_rated[2].photo.key, class:"root-image" %>
+            <% end %>
+          </div>
+          <div class="col-8 review_text">
+            <div>
+              <h4 class="py-4"><%= @top_rated[2].address %></h4>
+              <div class="my-1">
+                <% if @top_rated[2].average_rating[:average] == 5 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i>
+                    <p>- (<%= @top_rated[2].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[2].average_rating[:average] == 4 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[2].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[2].average_rating[:average] == 3 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[2].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[2].average_rating[:average] == 2 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[2].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[2].average_rating[:average] == 1 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[2].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% else %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[2].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% end %>
+              </div>
+              <p><%= @top_rated[2].description %></p>
+              <%= link_to "Details", product_path(@top_rated[2]), class: "btn btn-outline-dark" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item" >
+        <div class="row top_rated_preview align-items-center review-card">
+          <div class="col-4">
+            <% if @top_rated[3].photo.key.nil? %>
+              <%= image_tag "no-image.png", class:"root-image" %>
+            <% else %>
+              <%= cl_image_tag @top_rated[3].photo.key, class:"root-image" %>
+            <% end %>
+          </div>
+          <div class="col-8 review_text">
+            <div>
+              <h4 class="py-4"><%= @top_rated[3].address %></h4>
+              <div class="my-1">
+                <% if @top_rated[3].average_rating[:average] == 5 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i>
+                    <p>- (<%= @top_rated[3].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[3].average_rating[:average] == 4 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[3].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[3].average_rating[:average] == 3 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[3].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[3].average_rating[:average] == 2 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[3].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[3].average_rating[:average] == 1 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[3].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% else %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[3].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% end %>
+              </div>
+              <p><%= @top_rated[3].description %></p>
+              <%= link_to "Details", product_path(@top_rated[3]), class: "btn btn-outline-dark" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item" >
+        <div class="row top_rated_preview align-items-center review-card">
+          <div class="col-4">
+            <% if @top_rated[4].photo.key.nil? %>
+              <%= image_tag "no-image.png", class:"root-image" %>
+            <% else %>
+              <%= cl_image_tag @top_rated[4].photo.key, class:"root-image" %>
+            <% end %>
+          </div>
+          <div class="col-8 review_text">
+            <div>
+              <h4 class="py-4"><%= @top_rated[4].address %></h4>
+              <div class="my-1">
+                <% if @top_rated[4].average_rating[:average] == 5 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i>
+                    <p>- (<%= @top_rated[4].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[4].average_rating[:average] == 4 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[4].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[4].average_rating[:average] == 3 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[4].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[4].average_rating[:average] == 2 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[4].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% elsif @top_rated[4].average_rating[:average] == 1 %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[4].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% else %>
+                  <div class="d-flex">
+                    <i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
+                    <p>- (<%= @top_rated[4].average_rating[:num] %> Avis)</p>
+                  </div>
+                <% end %>
+              </div>
+              <p><%= @top_rated[4].description %></p>
+              <%= link_to "Details", product_path(@top_rated[4]), class: "btn btn-outline-dark" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true" style="color:black;"></span>
+      <span class="sr-only">Précédent</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Suivant</span>
+    </button>
+

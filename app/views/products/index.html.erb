@@ -1,6 +1,6 @@
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center text-white">
-   <h1 class="display-1 pt-5">Ensembles À Louer</h1>
+   <h2 class="display-1 pt-5">Ensembles À Louer</h2>
   </div>
 </div>
 
@@ -23,9 +23,8 @@
             <% end %>
             <h5 class="card-title text-center"><%= link_to product.title, product_path(product) %></h5>
             <p class="card-text"><%= product.description %></p>
-            <p class="card-text"><%= product.price %> €/ semaine</p>
-            <%# <a href="#" class="rounded-pill btn btn-outline-warning">Acheter</a> %>
-            <%= link_to "Louer",  new_product_booking_path(product), class: "rounded-pill btn btn-outline-warning" %>
+            <p class="card-text"><%= product.price %> €/ jours</p>
+            <%= link_to "Voir le produit", product, class: "rounded-pill btn btn-outline-warning" %>
           </div>
         </div>
       </div>

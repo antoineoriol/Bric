@@ -43,10 +43,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_184236) do
   end
 
   create_table "bookings", force: :cascade do |t|
+    t.integer "total_price"
+    t.date "start_date"
+    t.date "end_date"
     t.bigint "product_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "start_date"
-    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "pending"
@@ -56,17 +57,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_184236) do
 
   create_table "products", force: :cascade do |t|
     t.string "title"
-    t.string "description"
+    t.text "description"
+    t.string "address"
+    t.string "city"
+    t.string "photo"
+    t.integer "capacity"
     t.integer "price"
+    t.float "latitude"
+    t.float "longitude"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "location"
-    t.string "status", default: "available"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "address"
+    t.boolean "status", default: true
+    t.date "start_date"
+    t.date "end_date"
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "content"
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -88,4 +102,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_184236) do
   add_foreign_key "bookings", "products"
   add_foreign_key "bookings", "users"
   add_foreign_key "products", "users"
+  add_foreign_key "reviews", "bookings"
+
 end

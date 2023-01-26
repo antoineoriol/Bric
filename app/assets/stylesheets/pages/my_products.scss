@@ -1,9 +1,9 @@
-.my_roducts_page {
+.my_products_page {
   margin: 32px 0 16px 16px;
 
 }
 
-.my_roducts_container {
+.my_products_container {
   display: flex;
   flex-flow: column;
   hr {
@@ -15,20 +15,27 @@
   }
 }
 
-.my_roduct_image {
+.my_product_image {
   max-width: 260px;
   border-radius: 16px;
 }
 
-.roduct_row {
+.product_row {
   margin-top: 16px;
   display: flex;
   justify-content: center;
   align-items: baseline;
 }
 
+.bin {
+  margin-left: 32px;
+  font-size: 32px;
+}
 
-
+.add_new_product {
+  width: fit-content;
+  margin: 0 auto;
+}
 .photo {
   margin: 0 32px 16px 0;
 }

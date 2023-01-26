@@ -1,0 +1,41 @@
+.container {
+  margin: 0 auto;
+}
+
+.product_info {
+  margin: 0 auto;
+}
+
+.product_pic {
+  width: 50%;
+  border-radius: 16px;
+  margin-top: 36px;
+}
+
+.product_show_info {
+  margin: 18px 12px 18px 12px;
+}
+
+.booking_form {
+  margin: 24px 0 24px 0;
+}
+
+.product-options {
+  margin: 0 auto;
+  .btn {
+    margin-right: 16px;
+  }
+}
+
+.product-data {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 16px;
+  padding: 16px;
+  width: fit-content;
+}
+
+.book_button .btn {
+  display: block;
+  margin: 24px auto;
+}
