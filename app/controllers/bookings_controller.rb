@@ -27,8 +27,11 @@ class BookingsController < ApplicationController
 
   def index
     #@bookings = Booking.all
-    @bookings = policy_scope(Booking)
-    @bookings = current_user.products.map(&:bookings).flatten.select { |b| b.status == "pending" }
+    @my_bookings = policy_scope(Booking)
+    @my_bookings = Booking.where(user_id: current_user.id)
+    @my_products_booked = current_user.products.map(&:bookings).flatten
+
+    # current_user.products.map(&:bookings)#.flatten.select { |b| b.status == "pending" }
   end
 
   def new
