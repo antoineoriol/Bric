@@ -1,6 +1,6 @@
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center text-white">
-   <h2 class="display-1 pt-5">Vos reservation</h2>
+    <h2 class="display-1 pt-5">Vos reservation</h2>
   </div>
 </div>
 
@@ -44,7 +44,7 @@
 
   <% if @bookings.empty? %>
     <p>Vous n'avez pas encore de réservations</p>
-  <% else %>
+    <% else %>
     <div class="box d-flex flex-column">
     <h2>En cours</h2>
     <% @bookings.each do |booking| %>
