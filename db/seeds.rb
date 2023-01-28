@@ -78,10 +78,37 @@ lego_sets = [
     price: 499,
     start_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
     end_date: Faker::Date.between(from: 2.days.from_now, to: 30.days.from_now),
+    user: user1 },
+  { title: 'Le stade Santiago',
+    description: "Célèbre plus de 75 ans de matchs légendaires avec l'ensemble Le stade Santiago Bernabéu du Real Madrid",
+    address: "3 Bd Michelet, 13008",
+    city: 'Marseille',
+    capacity: 5876,
+    price: 12,
+    start_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
+    end_date: Faker::Date.between(from: 2.days.from_now, to: 30.days.from_now),
+    user: user1 },
+  { title: 'Le Taj Mahal',
+    description: "Ce superbe modèle à construire et exposer du Taj Mahal est idéal pour les passionnés d’architecture, de voyages et d’histoire.",
+    address: "1 Place François Mitterrand, 59777",
+    city: 'Lille',
+    capacity: 2022,
+    price: 14,
+    start_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
+    end_date: Faker::Date.between(from: 2.days.from_now, to: 30.days.from_now),
+    user: user1 },
+  { title: 'Le Colisée',
+    description: "Ce superbe modèle à construire et exposer du Taj Mahal est idéal pour les passionnés d’architecture, de voyages et d’histoire.",
+    address: "1 Place François Mitterrand, 59777",
+    city: 'Tours',
+    capacity: 9036,
+    price: 13,
+    start_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
+    end_date: Faker::Date.between(from: 2.days.from_now, to: 30.days.from_now),
     user: user1 }
 ]
 
-lego_photos = ['star_wars.jpg', 'eiffel.jpg', 'pyramide.jpg', 'maison.jpg', 'voiture.jpg', 'avion.jpg', 'train.jpg']
+lego_photos = ['star_wars.jpg', 'eiffel.jpg', 'pyramide.jpg', 'maison.jpg', 'voiture.jpg', 'avion.jpg', 'train.jpg', 'stade.jpg', 'mahal2.jpg', 'colise.jpg']
 
 puts 'creating legos'
 lego_sets.each_with_index do |lego_set, index|
