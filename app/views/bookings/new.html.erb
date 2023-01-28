@@ -12,10 +12,10 @@
     <div class="row">
       <%= simple_form_for [@product, @booking] do |f| %>
       <div class="col-md-auto">
-        <%= f.input :start_date, label: 'Date de début souhaitée', as: :date, order: [:day, :month, :year]  %>
+        <%= f.input :start_date, label: 'Date de début souhaitée', as: :date, html5: true, order: [:day, :month, :year]  %>
       </div>
       <div class="col-md-auto">
-        <%= f.input :end_date, label: 'Date de fin souhaitée', as: :date, order: [:day, :month, :year] %>
+        <%= f.input :end_date, label: 'Date de fin souhaitée', as: :date, html5: true,order: [:day, :month, :year] %>
       </div>
       <div class="col text-center mt-5">
         <%= f.submit "Faire une demande", class: "btn btn-success" %>
