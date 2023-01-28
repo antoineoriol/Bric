@@ -5,19 +5,19 @@
   </div>
 </div>
 
-<div class="container">
-  <h1>Ma demande de réservation pour <%= @product.title %></h1>
-  <p>Produit : <%= @product.title %></p>
-  <p>Description : <%= @product.description %>
+  <h1 class="">Faire une demande de réservation pour <%= @product.title %></h1>
+<div class="container d-flex flex-column card p-4 mb-4 shadow w-50 mx-auto">
+  <p class="text-center">Produit : <strong><%= @product.title %></strong></p>
+  <p class="text-center">Description : <%= @product.description %>
     <div class="row">
       <%= simple_form_for [@product, @booking] do |f| %>
-      <div class="col-4">
+      <div class="col-md-auto">
         <%= f.input :start_date, label: 'Date de début souhaitée', as: :date, order: [:day, :month, :year]  %>
       </div>
-      <div class="col-4">
+      <div class="col-md-auto">
         <%= f.input :end_date, label: 'Date de fin souhaitée', as: :date, order: [:day, :month, :year] %>
       </div>
-      <div class="col-4">
+      <div class="col text-center mt-5">
         <%= f.submit "Faire une demande", class: "btn btn-success" %>
       </div>
       <% end %>
