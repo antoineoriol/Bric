@@ -19,9 +19,6 @@ class Product < ApplicationRecord
   validates :city, presence: true
   validates :capacity, presence: true
   validates :price, presence: true
-  validates :status, presence: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
 
 
   def status?
