@@ -12,8 +12,8 @@
       <%= f.input :price, label: 'Prix' %>
       <%= f.input :city, label: 'Ville' %>
       <%= f.input :address, label: 'Addresse' %>
-      <%= f.input :start_date, label: 'Date de début souhaitée', as: :date, order: [:day, :month, :year] %>
-      <%= f.input :end_date, label: 'Date de fin souhaitée', as: :date, order: [:day, :month, :year] %>
+      <%= f.input :start_date, label: 'Date de début souhaitée', as: :date, html5: true, order: [:day, :month, :year] %>
+      <%= f.input :end_date, label: 'Date de fin souhaitée', as: :date, html5: true, order: [:day, :month, :year] %>
       <%= f.input :capacity, label: 'Nombre de pièces' %>
       <%= f.input :status, label: 'Available' %>
       <%= f.input :photo, as: :file %>
