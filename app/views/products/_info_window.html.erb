@@ -6,8 +6,10 @@
   <% end %>
 
   <div class="map-card">
-    <p><span class="font-weight-bold" style="font: size 15px;"><i class="fa fa-location-arrow"></i></span>  <%= product.address %> <strong></strong></p>
-    <p><span class="font-weight-bold" style="font-size:15px;"><i class="fa fa-user"></i></span>  <%= product.title %> </p>
-    <p>€/semaine <span class="font-weight-bold" style="font-size:30px; text-align:right; font-family:"><%= product.price %></span></p>
+    <p><span class="" style="font: size 15px;"><i class="fa fa-location-arrow"></i></span>  <%= product.address %> <strong></strong></p>
+    <p><span class="" style="font-size:15px;"><i class="fa fa-user"></i></span>  <%= product.title %> </p>
+    <p>€/semaine <span class="" style="font-size:30px; text-align:right; font-family:"><%= product.price %></span></p>
   </div>
+    <p class='text-center'><%= link_to "Louer", new_product_booking_path(product), class: "btn btn-outline-primary rounded-pill" %>
+</p>
 <% end %>
