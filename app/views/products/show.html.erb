@@ -18,42 +18,7 @@
 
       <div class="product_show_info">
         <h1><%= @product.title %></h1>
-        <p class="card-text">
-          <strong>Average Rating: </strong>
-          <%= link_to reviews_product_path do %>
-          <%if @product.average_rating[:average] == 5 %>
-            <div class="d-flex">
-              <p><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i>
-              - (<%= @product.average_rating[:num] %> reviews)</p>
-            </div>
-          <% elsif @product.average_rating[:average] == 4 %>
-            <div class="d-flex">
-              <p><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i>
-              - (<%= @product.average_rating[:num] %> reviews)</p>
-            </div>
-          <% elsif @product.average_rating[:average] == 3 %>
-            <div class="d-flex">
-              <p><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
-              - (<%= @product.average_rating[:num] %> reviews)</p>
-            </div>
-          <% elsif @product.average_rating[:average] == 2 %>
-            <div class="d-flex">
-              <p><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
-              - (<%= @product.average_rating[:num] %> reviews)</p>
-            </div>
-          <% elsif @product.average_rating[:average] == 1 %>
-            <div class="d-flex">
-              <p><i class="fas fa-star" style="color: gold"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
-              - (<%= @product.average_rating[:num] %> reviews)</p>
-            </div>
-          <% else %>
-            <div class="d-flex">
-              <p><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i><i class="fas fa-star" style="color: grey"></i>
-              - (<%= @product.average_rating[:num] %> reviews)</p>
-            </div>
-          <% end %>
-          <% end %>
-        </p>
+       
         <p class="card-text"><strong>Addresse: </strong><%= @product.address %>
           <p><strong>Nombre de pièces: </strong><%= @product.capacity %></p>
           <p><strong>Description: </strong><%= @product.description %></p>
@@ -70,18 +35,3 @@
   </div>
 </div>
       <hr>
-
-    <div class="d-flex flex-row product-options">
-      <% if policy(Product).create? %>
-        <%= link_to "Ajouter produits", new_product_path, class: "btn btn-primary h-25" %>
-      <% end %>
-      <% if policy(@product).edit? %>
-        <%= link_to 'Modifier', edit_product_path(@product), class:"btn btn-primary" %>
-      <% end %>
-      <% if policy(@product).destroy? %>
-        <%= link_to 'Suprimer', @product, method: :delete, class:"btn btn-primary", data: {confirm: "sure?"} %>
-      <% end %>
-      <% if policy(Product).create? %>
-        <%= link_to "Retour à Tous les produits", products_path, class: "btn btn-primary"  %>
-      <% end %>
-    </div>
