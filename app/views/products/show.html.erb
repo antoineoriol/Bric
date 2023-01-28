@@ -18,8 +18,8 @@
 
       <div class="product_show_info">
         <h1><%= @product.title %></h1>
-       
-        <p class="card-text"><strong>Addresse: </strong><%= @product.address %>
+
+        <p class="card-text"><strong>Adresse: </strong><%= @product.address %>
           <p><strong>Nombre de pièces: </strong><%= @product.capacity %></p>
           <p><strong>Description: </strong><%= @product.description %></p>
           <p><strong>Prix ​​par semaine: </strong><%= @product.price %> €</p>
@@ -35,3 +35,21 @@
   </div>
 </div>
       <hr>
+<<<<<<< HEAD
+
+    <div class="d-flex flex-row product-options">
+      <% if policy(Product).create? %>
+        <%= link_to "Ajouter produits", new_product_path, class: "btn btn-primary h-25" %>
+      <% end %>
+      <% if policy(@product).edit? %>
+        <%= link_to 'Modifier', edit_product_path(@product), class:"btn btn-primary" %>
+      <% end %>
+      <% if policy(@product).destroy? %>
+        <%= link_to 'Supprimer', product_path(@product), method: :delete, class:"btn btn-primary", data: {confirm: "Êtes-vous sûr ??"} %>
+      <% end %>
+      <% if policy(Product).create? %>
+        <%= link_to "Retour à Tous les produits", products_path, class: "btn btn-primary"  %>
+      <% end %>
+    </div>
+=======
+>>>>>>> master

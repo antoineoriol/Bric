@@ -76,12 +76,11 @@
     </div>
   </div>
   <div class="booking-options">
-    <%= link_to "Supprimer cette réservation", booking_path(@booking), method: :delete, data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-primary mx-2" %>
       <% if policy(@booking).edit? %>
       <%= link_to 'Modifier cette réservation', edit_booking_path(@booking), class: "btn btn-primary mx-2" %>
     <% end %>
     <% if policy(@booking).destroy? %>
-      <%= link_to 'Retour à vos réservations', bookings_path, class: "btn btn-primary mx-2" %>
+      <%= link_to "Supprimer cette réservation", booking_path(@booking), method: :delete, data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-primary mx-2" %>
     <% end %>
   </div>
 </div>
