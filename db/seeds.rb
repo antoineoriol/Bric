@@ -21,7 +21,7 @@ lego_sets = [
     address: '47 rue berger 75001',
     city: 'Paris',
     capacity: 7541,
-    price: 14
+    price: 14,
     start_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
     end_date: Faker::Date.between(from: 2.days.from_now, to: 30.days.from_now),
     user: user1 },
