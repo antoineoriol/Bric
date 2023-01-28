@@ -11,17 +11,29 @@ data: {turbo: false}) do |f| %>
 
   <div class="form-inputs">
     <%= f.input :email,
+<<<<<<< HEAD
                 label: "Email",
+=======
+                label: "Email:",
+>>>>>>> master
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "Email" }%>
     <%= f.input :password,
+<<<<<<< HEAD
                 label: "Mot de passe",
+=======
+                label: "Mot de passe:",
+>>>>>>> master
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
+<<<<<<< HEAD
                 label: "Confirmer votre mot de passe",
+=======
+                label: "Confirmation mot de passe:",
+>>>>>>> master
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
   </div>
