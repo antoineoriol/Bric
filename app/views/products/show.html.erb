@@ -1,12 +1,9 @@
 <div class="cover mb-4 d-flex align-items-center justify-content-center">
   <div class="text-center text-white">
-    <h2 class="display-1 pt-5">Ensembles À Louer</h2>
   </div>
 </div>
 
 <div class="container">
-
-
     <div class="product-data d-flex">
         <div class="d-flex justify-content-between">
           <% if @product.photo.attached? %>
@@ -17,21 +14,38 @@
         </div>
 
       <div class="product_show_info">
-        <h1><%= @product.title %></h1>
-       
-        <p class="card-text"><strong>Addresse: </strong><%= @product.address %>
-          <p><strong>Nombre de pièces: </strong><%= @product.capacity %></p>
-          <p><strong>Description: </strong><%= @product.description %></p>
-          <p><strong>Prix ​​par semaine: </strong><%= @product.price %> €</p>
+        <h1 class="card-text"><%= @product.title %></h1>
+      <div class="card-text">
+          <p><strong>Description : </strong><%= @product.description %></p>
+          <p><strong>Nombre de pièces : </strong><%= @product.capacity %></p>
+          <p><strong>Adresse : </strong><%= @product.address %>
+          <p><strong>Ville : </strong><%= @product.city %></p>
+          <p><strong>Prix ​​par semaine : </strong><%= @product.price %>€</p>
           <% if @product.status? %>
             <p class="card-text text-success"><strong>Disponible</strong></p><br>
           <% else %>
             <p class="card-text"><strong>Indisponible</strong></p><br>
           <% end %>
-          <%= link_to "Louer", "/products/#{params[:id]}/bookings/new", class: "btn btn-primary" %>
+          <%= link_to "Faire une demande de location", "/products/#{params[:id]}/bookings/new", class: "btn btn-primary" %>
         </p>
+      </div>
       </div>
 
   </div>
 </div>
       <hr>
+
+    <%# <div class="d-flex flex-row product-options"> %>
+      <%# <% if policy(Product).create? %>
+        <%# <%= link_to "Ajouter produits", new_product_path, class: "btn btn-primary h-25" %>
+      <%# <% end %>
+      <%# <% if policy(@product).edit? %>
+        <%# <%= link_to 'Modifier', edit_product_path(@product), class:"btn btn-primary" %>
+      <%# <% end %>
+      <%# <% if policy(@product).destroy? %>
+        <%# <%= link_to 'Supprimer', product_path(@product), method: :delete, class:"btn btn-primary", data: {confirm: "Êtes-vous sûr ??"} %>
+      <%# <% end %>
+      <%# <% if policy(Product).create? %>
+        <%# <%= link_to "Retour à Tous les produits", products_path, class: "btn btn-primary"  %>
+      <%# <% end %>
+    <%# </div> %>
