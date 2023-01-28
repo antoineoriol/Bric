@@ -3,6 +3,21 @@
   </div>
 </div>
 
+  <% if @my_bookings.empty? %>
+    <p class='text-center mt-5'><strong>Vous n'avez pas encore de réservations</strong></p>
+    <% else %>
+    <div class="box d-flex flex-column">
+    <h2>En cours</h2>
+    <% @my_bookings.each do |booking| %>
+        <div class="d-flex flex-column card card-title card-category card-large">
+          <%= booking.product.title %>
+          <%= booking.product.price %>€/semaine
+          <%= booking.status %>
+          <%= link_to %>
+        </div>
+      <% end %>
+  <% end %>
+
 <div class="py-5">
   <div class="container">
     <div class="row hidden-md-up">
@@ -65,19 +80,5 @@
     </div>
   </div>
 
-  <% if @my_bookings.empty? %>
-    <p>Vous n'avez pas encore de réservations</p>
-    <% else %>
-    <div class="box d-flex flex-column">
-    <h2>En cours</h2>
-    <% @my_bookings.each do |booking| %>
-        <div class="d-flex flex-column card card-title card-category card-large">
-          <%= booking.product.title %>
-          <%= booking.product.price %>€/semaine
-          <%= booking.status %>
-          <%= link_to %>
-        </div>
-      <% end %>
-  <% end %>
 
 </div>
