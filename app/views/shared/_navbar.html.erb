@@ -43,8 +43,8 @@
               <a class="dropdown-item" data-turbo-method="delete" href="<%= destroy_user_session_path %>">Se déconnecter</a>
             </div>
             <% else %>
-            <li><%= link_to "S'enregistrer", new_user_registration_path, class: 'btn btn-outline-primary rounded-pill' %></li>
-            <%= link_to "Se connecter", new_user_session_path, class: 'btn btn-outline-primary rounded-pill' %>
+            <li><%= link_to "S'enregistrer", new_user_registration_path, class: 'btn btn-outline-primary rounded-pill mx-2' %></li>
+            <%= link_to "Se connecter", new_user_session_path, class: 'btn btn-outline-primary rounded-pill mx-2' %>
 
             <% end %>
           </li>
